@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Public Speaking Club</title>
+  <style>
+   :root {
+  --primary: #FF2D2D;
+  --secondary: #333;
+  --light: #fff;
+  --text: #333;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.15);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--text);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   TYPOGRAPHY & UTILITIES
+======================================== */
+h1, h2, h3, h4 {
+  line-height: 1.2;
+}
+
+.section-title,
+.schedule-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: var(--secondary);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--light);
+  color: var(--primary);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: transparent;
+  color: var(--light);
+  border-color: var(--light);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ========================================
+   HEADER & NAVIGATION
+======================================== */
+header {
+  background-color: var(--primary);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+header.scrolled {
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--light);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.nav-links a:focus {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.social-icons a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.social-icons a:hover {
+  transform: scale(1.06);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.social-icons a:focus {
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+.hero {
+  background-color: var(--primary);
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+  color: var(--light);
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+/* Container for consistent max-width and centering */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === MISSION SECTION === */
+.mission-section {
+  background-color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.mission-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--secondary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* === FOCUS SECTION === */
+.focus-section {
+  background-color: #fafafa;
+  padding: 4rem 2rem;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.focus-item {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.focus-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.focus-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.focus-item h3 {
+  color: var(--secondary);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.focus-item p {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* === TIMELINE SECTION === */
+.timeline-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #eee;
+}
+
+.timeline-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--secondary);
+  max-width: 800px;
+  margin: 1rem auto 0;
+  text-align: center;
+}
+
+/* ========================================
+   ANNOUNCEMENTS
+======================================== */
+.announcement-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.announcement-card {
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.announcement-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.announcement-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.announcement-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.announcement-date {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.announcement-title {
+  font-size: 1.25rem;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.announcement-content {
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 1rem;
+  flex: 1;
+}
+
+/* ========================================
+   COMMITTEE
+======================================== */
+.Leadership Club-committee {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.committee-member-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.committee-member-card:hover {
+  transform: translateY(-6px);
+}
+
+.committee-member-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.member-info {
+  padding: 15px;
+}
+
+.member-name {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.member-role {
+  color: #FF2D2D;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.member-email {
+  color: #555;
+  font-size: 0.85rem;
+  word-break: break-word;
+}
+/* ========================================
+   SCHEDULE / CALENDAR
+======================================== */
+.schedule {
+  background-color: var(--light);
+  padding: 3rem 2rem;
+}
+
+.calendar-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.calendar-month {
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid #eee;
+}
+
+.calendar-month h3 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #eee;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.calendar-day {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  transition: var(--transition);
+  background-color: #f9f9f9;
+  cursor: pointer;
+  min-height: 34px;
+}
+
+.calendar-day:hover {
+  background-color: rgba(255, 45, 45, 0.06);
+}
+
+.calendar-day.event {
+  background-color: rgba(79, 70, 229, 0.07);
+  font-weight: bold;
+}
+
+.calendar-day.holiday {
+  background-color: rgba(220, 38, 38, 0.06);
+  color: #999;
+  text-decoration: line-through;
+}
+
+.calendar-day.special {
+  background-color: rgba(16, 185, 129, 0.06);
+  font-weight: bold;
+}
+
+.calendar-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+}
+
+.dot-blue { background-color: #4F46E5; }
+.dot-green { background-color: #10B981; }
+.dot-yellow { background-color: #F59E0B; }
+.dot-purple { background-color: #7C3AED; }
+.dot-gray { background-color: #6B7280; }
+.dot-brown { background-color: #78350F; }
+.dot-red { background-color: #DC2626; }
+
+.weekday-header {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: var(--primary);
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+/* ========================================
+   CONTACT
+======================================== */
+.contact {
+  background-color: var(--primary);
+  padding: 4rem 2rem;
+  color: var(--light);
+  text-align: center;
+}
+
+.contact-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  backdrop-filter: blur(5px);
+}
+
+.contact-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--light);
+}
+
+.contact-text a {
+  color: var(--light);
+  font-weight: bold;
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.contact-text a:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Button styling override for red background */
+.btn-primary {
+  background-color: var(--light);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: transparent;
+  color: var(--light);
+  border-color: var(--light);
+}
+/* ========================================
+   MODALS
+======================================== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h2 {
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  color: var(--primary);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: rotate(90deg);
+}
+
+/* Join Form Styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 45, 45, 0.12);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+/* Event Modal */
+.event-details {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.event-details h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.event-details p {
+  margin-bottom: 0.5rem;
+}
+
+/* Committee Member Modal */
+.member-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+}
+
+.member-role-modal {
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.member-bio {
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+footer {
+  background-color: var(--secondary);
+  color: var(--light);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .section,
+  .mission,
+  .website-committee,
+  .schedule,
+  .contact,
+  .announcements {
+    padding: 2rem 1rem;
+  }
+
+  .section-title,
+  .schedule-title,
+  .contact h2 {
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .calendar-container {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-day {
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+   <a href="#" class="logo" aria-label="Public Speaking Club home">
+  <img src="./image/PSC LOGO.jpg" alt="Public Speaking Club Logo">
+  PUBLIC SPEAKING CLUB
+</a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#mission">Mission</a>
+      <a href="#focus">Club's Focus</a>
+      <a href="#announcements">Announcements</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#committee"> Club Leadership</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="social-icons" aria-hidden="false">
+      <!-- Email -->
+      <a href="mailto:leeann.reth@bhcc.edu" aria-label="Email" title="Email us">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="0.6" stroke-linejoin="round" fill="none" />
+          <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Need to boost confidence in Public Speaking? Join the club.</h1>
+      <p>Sign up now and collaborate with fellow members in setting topics for discussions and practicing public speaking!</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScfGhwjW3yAUeJDdaLtmmdjCLsxKKft6Y5uJco3DWzpdqu6zA/viewform?usp=sf_link" target="_blank" rel="noopener" aria-label="Join Public Speaking Club form"> 
+        <button class="btn btn-primary">Join</button>
+      </a>    </div>
+    <div class="hero-image" aria-hidden="true">
+      <img src="./image/homepage.jpg" style="max-height: 400px; width: 600px;" alt="Public Speaking Event">
+    </div>
+  </section>
+
+ <!-- MISSION SECTION -->
+<section id="mission" class="section mission-section">
+  <div class="container">
+    <h2 class="section-title">Our Mission</h2>
+    <div class="mission-content">
+      <p class="mission-text">
+        Our mission is to empower students to speak with confidence, connect through communication, and inspire change through the power of words.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS & TIMELINE SECTION -->
+<section id="focus" class="section focus-section">
+  <div class="container">
+    <h2 class="section-title">Club's Focus</h2>
+    <div class="focus-grid">
+      <div class="focus-item">
+        <div class="focus-icon">🗣️</div>
+        <h3>Build Confidence</h3>
+        <p>Through regular speaking and constructive feedback sessions designed to reduce anxiety and build poise.</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-icon">🤝</div>
+        <h3>Develop Skills</h3>
+        <p>Hone strong communication, active listening, and leadership abilities essential for academic and professional success.</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-icon">👥</div>
+        <h3>Supportive Community</h3>
+        <p>A safe, encouraging space where members learn from each other, celebrate progress, and grow together.</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-icon">🎉</div>
+        <h3>Campus Engagement</h3>
+        <p>We host events that foster self-expression, spark meaningful dialogue, and amplify student voices across campus.</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-section">
+      <h2 class="section-title">Semester Timeline</h2>
+      <p class="timeline-text">
+        Our club operates on a semester-based schedule with monthly themes and weekly meetings. Each semester begins with an orientation session, followed by skill-building workshops, peer practice sessions, and culminates in our annual showcase event where members present their best speeches to the campus community.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <section id="announcements" class="announcements">
+  <h2 class="section-title">Updates & Announcements</h2>
+  <div class="announcement-container">
+    <!-- Announcement 1 -->
+    <article class="announcement-card">
+      <img src="./image/PSC First meeting.jpg" alt="Public Speaking Club Kicks Off Fall Semester" />
+      <div class="announcement-body">
+        <time class="announcement-date">October 01, 2025</time>
+        <h3 class="announcement-title">Public Speaking Club Kicks Off Fall Semester</h3>
+        <p class="announcement-content">
+          Public Speaking Club held its first Fall semester meeting on Wednesday, October 1st, marking an exciting start for students interested in building confidence and communication skills. The club provides opportunities to develop and showcase speaking abilities through debates, presentations, discussions, and social interactions.
+          The meeting began with an icebreaker to help members get to know each other and set a friendly, welcoming tone. It promises to be a fun and engaging semester exploring all that the club has to offer.
+        </p>
+      </div>
+    </article>
+
+    <!-- Announcement 2 -->
+    <article class="announcement-card">
+      <img src="./image/PSC CONING SOON.jpg" alt="Fall 2025 End-of-Semester Celebration" />
+      <div class="announcement-body">
+        <time class="announcement-date">December 16, 2025</time>
+        <h3 class="announcement-title">Fall 2025 End-of-Semester Celebration</h3>
+        <p class="announcement-content">
+          Coming Soon! The end-of-semester party for Fall 2025 will be held on December 16th. The event will feature food, club reflections, a speech competition, games, and more! It’s a great opportunity to connect and have fun with like-minded individuals. Don’t miss it! 🥂
+        </p>
+      </div>
+    </article>
+
+    <!-- Announcement 3 -->
+    <article class="announcement-card">
+      <img src="./image/PSC WEBSITE COMMITTE.jpg" alt="Meet the Team Behind Our Website" />
+      <div class="announcement-body">
+        <h3 class="announcement-title">Meet the Team Behind Our Website</h3>
+        <p class="announcement-content">
+          The Website Officers have finally moved from screens to in-person meetings, truly tech-minded! A big thanks to the team for bringing the website to life, applying classroom skills to make this project a reality. Meet the people behind it: Nhan Lien, Julie Dorchhuon, Arturo Li, and Ronewa Masindi.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+  <section id="schedule" class="schedule">
+    <h2 class="schedule-title">Activity Calendar Fall 2025</h2>
+    <div class="calendar-container">
+      <div class="calendar-month" aria-label="October 2025">
+        <h3>October</h3>
+        <div class="calendar-grid" id="october-calendar" role="grid" aria-readonly="true">
+          <!-- Calendar days will be generated by JavaScript -->
+        </div>
+      </div>
+      
+      <div class="calendar-month" aria-label="November 2025">
+        <h3>November</h3>
+        <div class="calendar-grid" id="november-calendar" role="grid" aria-readonly="true">
+          <!-- Calendar days will be generated by JavaScript -->
+        </div>
+      </div>
+      
+      <div class="calendar-month" aria-label="December 2025">
+        <h3>December</h3>
+        <div class="calendar-grid" id="december-calendar" role="grid" aria-readonly="true">
+          <!-- Calendar days will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="committee" class="club Leadership">
+  <h2 class="section-title">club Leadership</h2>
+  <div class="committee-grid">
+
+    <div class="committee-member-card">
+      <img src="./image/Lee_An_Reth.jpg" alt="Lee An Reth">
+      <div class="member-info">
+        <div class="member-name">Lee An Reth</div>
+        <div class="member-role">President</div>
+        <div class="member-email">leean.reth@bhcc.edu</div>
+      </div>
+    </div>
+
+    <div class="committee-member-card">
+      <img src="./image/Joshua Johnston.jpg" alt="Joshua Johnston">
+      <div class="member-info">
+        <div class="member-name">Joshua Johnston</div>
+        <div class="member-role">Vice President Communications</div>
+        <div class="member-email">joshua.johnston@bhcc.edu</div>
+      </div>
+    </div>
+
+    <div class="committee-member-card">
+      <img src="./image/Alyssa Held.jpg" alt="Alyssa Held">
+      <div class="member-info">
+        <div class="member-name">Alyssa Held</div>
+        <div class="member-role">Vice President of Community Engagement</div>
+        <div class="member-email">Alyssa.Held@bhcc.edu</div>
+      </div>
+    </div>
+
+    <div class="committee-member-card">
+      <img src="./image/Arthur_Lobo.png" alt="Arthur Lobo">
+      <div class="member-info">
+        <div class="member-name">Arthur Lobo</div>
+        <div class="member-role">Treasurer</div>
+        <div class="member-email">anlobo@bhcc.edu</div>
+      </div>
+    </div>
+
+    <div class="committee-member-card">
+      <img src="./image/Vichet_Lim.jpg" alt="Vichet Lim">
+      <div class="member-info">
+        <div class="member-name">Vichet Lim</div>
+        <div class="member-role">Secretary</div>
+        <div class="member-email">vichet.lim@bhcc.edu</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact Committee Modal -->
+<section id="contact" class="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <div class="contact-content">
+    <p class="contact-text">
+      Email us at:  
+      <a href="mailto:leenan.reth@bhcc.edu or vichet.lim@bhcc.edu">leenan.reth@bhcc.edu or vichet.lim@bhcc.edu</a></p>
+
+    <div class="contact-actions">
+      <button class="btn btn-primary" id="contactBtn" aria-haspopup="dialog" aria-controls="contactModal">
+        Contact the Leadership Committee
+      </button>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; 2025 Public Speaking Club. All rights reserved.</p>
+  </footer>
+
+  <!-- Join Form Modal -->
+  <div class="modal" id="joinForm" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
+    <div class="modal-content">
+      <button class="close-modal" data-close aria-label="Close join form">&times;</button>
+      <h2 id="joinTitle">Join Public Speaking Club</h2>
+      <form id="membershipForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="experience">Public Speaking Experience</label>
+          <select id="experience" name="experience">
+            <option value="none">None</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Event Details Modal -->
+  <div class="modal" id="eventModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="eventTitle">
+    <div class="modal-content">
+      <button class="close-modal" data-close aria-label="Close event modal">&times;</button>
+      <h2 id="eventTitle">Event Details</h2>
+      <div class="event-details" id="eventDetails">
+        <!-- Event details will be filled by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Committee Member Modal -->
+  <div class="modal" id="memberModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="memberName">
+    <div class="modal-content">
+      <button class="close-modal" data-close aria-label="Close member modal">&times;</button>
+      <h2 id="memberName">Committee Member</h2>
+      <img id="memberImage" src="" alt="Committee Member" class="member-image">
+      <span id="memberRole" class="member-role-modal">Role</span>
+      <p id="memberBio" class="member-bio">Bio information will appear here.</p>
+    </div>
+  </div>
+
+  <script>
+    /* -------------------------
+       Utility: Modal open/close helpers
+       - uses aria-hidden attribute for accessibility
+       - overlay click and Escape key will close
+    ------------------------- */
+    function openModal(modal) {
+      if (!modal) return;
+      modal.setAttribute('aria-hidden', 'false');
+      // move focus to the first focusable element
+      const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable) focusable.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Close buttons & overlay clicks
+    document.querySelectorAll('.modal').forEach(modal => {
+      // overlay click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+      // close buttons inside modal (data-close)
+      modal.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(modal));
+      });
+    });
+
+    // Close on Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal[aria-hidden="false"]').forEach(m => closeModal(m));
+      }
+    });
+
+    /* -------------------------
+       Smooth scrolling for internal nav anchors
+    ------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return; // allow links that are just '#'
+        // Prevent default only for internal anchors that exist on page
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          const topPos = Math.max(0, targetElement.offsetTop - 80);
+          window.scrollTo({ top: topPos, behavior: 'smooth' });
+          // update focus for accessibility
+          targetElement.setAttribute('tabindex', '-1');
+          targetElement.focus({ preventScroll: true });
+        }
+      });
+    });
+
+    /* -------------------------
+       Join modal wiring
+    ------------------------- */
+    const joinBtn = document.getElementById('joinBtn');
+    const joinFormModal = document.getElementById('joinForm');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const membershipForm = document.getElementById('membershipForm');
+
+    if (joinBtn && joinFormModal) {
+      joinBtn.addEventListener('click', () => openModal(joinFormModal));
+    }
+    if (cancelBtn && joinFormModal) {
+      cancelBtn.addEventListener('click', () => closeModal(joinFormModal));
+    }
+    if (membershipForm) {
+      membershipForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Here you can replace with AJAX or other submit logic
+        alert('Thank you for your interest! We will contact you soon.');
+        closeModal(joinFormModal);
+        membershipForm.reset();
+      });
+    }
+
+    /* -------------------------
+       Contact committee modal wiring
+    ------------------------- */
+    const contactBtn = document.getElementById('contactBtn');
+    const contactModal = document.getElementById('contactModal');
+    const cancelContactBtn = document.getElementById('cancelContactBtn');
+    const committeeForm = document.getElementById('committeeForm');
+
+    if (contactBtn && contactModal) {
+      contactBtn.addEventListener('click', () => openModal(contactModal));
+    }
+    if (cancelContactBtn && contactModal) {
+      cancelContactBtn.addEventListener('click', () => closeModal(contactModal));
+    }
+    if (committeeForm) {
+      committeeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your message! We will get back to you soon.');
+        closeModal(contactModal);
+        committeeForm.reset();
+      });
+    }
+
+    /* -------------------------
+       Event Modal wiring
+    ------------------------- */
+    const eventModal = document.getElementById('eventModal');
+    const eventTitle = document.getElementById('eventTitle');
+    const eventDetails = document.getElementById('eventDetails');
+
+    // Close handled by generic close logic above
+
+    /* -------------------------
+       Committee members modal
+    ------------------------- */
+    const memberModal = document.getElementById('memberModal');
+    const memberNameEl = document.getElementById('memberName');
+    const memberImage = document.getElementById('memberImage');
+    const memberRole = document.getElementById('memberRole');
+    const memberBio = document.getElementById('memberBio');
+
+    const committeeMembers = {
+      1: {
+        name: "Name and lastname",
+        role: "President",
+        bio: "about you.",
+        image: "https://placehold.co/600x400?"
+      },
+      2: {
+        name: "name and lastname",
+        role: "Vice President",
+        bio: "about you.",
+        image: "https://placehold.co/600x400?" 
+      },
+      3: {
+        name: "Name and lastname",
+        role: "Workshop Coordinator",
+        bio: "about you.",
+        image: "https://placehold.co/600x400?"
+      },
+      4: {
+        name: "Name and lastname",
+        role: "Social Media Manager",
+        bio: "about you.",
+        image: "https://placehold.co/600x400?"
+      },
+      5: {
+        name: "Name and lastname",
+        role: "Treasurer",
+        bio: "about you.",
+        image: "https://placehold.co/600x400?"
+      },
+      6: {
+        name: "Name and lastname",
+        role: "Event Coordinator",
+        bio: "about you.",
+        image: "https://placehold.co/600x400?"
+      }
+    };
+
+    document.querySelectorAll('.committee-member').forEach(member => {
+      // allow click and Enter/Space activation
+      member.addEventListener('click', () => showMemberModal(member));
+      member.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showMemberModal(member);
+        }
+      });
+    });
+
+    function showMemberModal(memberEl) {
+      const memberId = memberEl.getAttribute('data-member');
+      const data = committeeMembers[memberId];
+      if (!data) return;
+      memberNameEl.textContent = data.name;
+      memberRole.textContent = data.role;
+      memberBio.textContent = data.bio;
+      memberImage.src = data.image;
+      memberImage.alt = data.name;
+      openModal(memberModal);
+    }
+
+    /* -------------------------
+       Calendar: generate calendars Oct/Nov/Dec 2025
+       - improved minor checks and handlers
+    ------------------------- */
+    function generateCalendar(containerId, month, year) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      container.innerHTML = '';
+
+      // Weekday headers
+      const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      weekdays.forEach(day => {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'weekday-header';
+        dayElement.textContent = day;
+        container.appendChild(dayElement);
+      });
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Empty cells before first day
+      for (let i = 0; i < firstDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day';
+        emptyDay.setAttribute('aria-hidden', 'true');
+        container.appendChild(emptyDay);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.tabIndex = 0;
+        dayElement.textContent = day;
+
+        const date = new Date(year, month, day);
+        const dayOfWeek = date.getDay();
+
+        // Helper to attach a dot and click handler
+        function addDotAndHandler(colorClass, title, detailsHtml) {
+          const dot = document.createElement('div');
+          dot.className = `calendar-dot ${colorClass}`;
+          dayElement.appendChild(dot);
+          dayElement.addEventListener('click', () => {
+            eventTitle.textContent = title;
+            eventDetails.innerHTML = detailsHtml;
+            openModal(eventModal);
+          });
+          dayElement.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              eventTitle.textContent = title;
+              eventDetails.innerHTML = detailsHtml;
+              openModal(eventModal);
+            }
+          });
+        }
+
+        // Regular meetings every Wednesday (3)
+        if (dayOfWeek === 3 && !(month === 10 && day === 11) && !(month === 11 && day > 16)) {
+          dayElement.classList.add('event');
+          addDotAndHandler('dot-blue',
+            `Weekly Meeting - ${month + 1}/${day}/${year}`,
+            `<h3>Weekly Club Meeting</h3>
+             <p><strong>Date:</strong> ${month + 1}/${day}/${year}</p>
+             <p><strong>Time:</strong> 3:45pm - 4:45pm</p>
+             <p><strong>Location:</strong> Student Center, Room 203</p>
+             <p><strong>Description:</strong> Join us for our regular weekly meeting where we practice public speaking skills, give and receive feedback, and work on improving our communication abilities.</p>`
+          );
+        }
+
+        // Veterans Day (Nov 11)
+        if (month === 10 && day === 11) {
+          dayElement.classList.add('holiday');
+          addDotAndHandler('dot-red',
+            `Veterans Day - ${month + 1}/${day}/${year}`,
+            `<h3>Veterans Day - No Classes</h3>
+             <p><strong>Date:</strong> ${month + 1}/${day}/${year}</p>
+             <p><strong>Description:</strong> College is closed in observance of Veterans Day. No classes or club meetings today.</p>`
+          );
+        }
+
+        // Thanksgiving break (Nov 27-30)
+        if (month === 10 && day >= 27 && day <= 30) {
+          dayElement.classList.add('holiday');
+          addDotAndHandler('dot-red',
+            `Thanksgiving Break - ${month + 1}/${day}/${year}`,
+            `<h3>Thanksgiving Break - No Classes</h3>
+             <p><strong>Date:</strong> ${month + 1}/${day}/${year}</p>
+             <p><strong>Description:</strong> College is closed for Thanksgiving break. No classes or club meetings today.</p>`
+          );
+        }
+
+        // Last day of semester (Dec 16)
+        if (month === 11 && day === 16) {
+          dayElement.classList.add('special');
+          addDotAndHandler('dot-green',
+            `end-semester party - ${month + 1}/${day}/${year}`,
+            `<h3>Last Meeting of Fall Semester</h3>
+             <p><strong>Date:</strong> ${month + 1}/${day}/${year}</p>
+             <p><strong>Time:</strong> TBD</p>
+             <p><strong>Location:</strong> TBD</p>
+             <p><strong>Description:</strong> This is our final meeting of the Fall 2025 semester. Join us for a special session where members will showcase their progress and we'll celebrate our achievements together.</p>`
+          );
+        }
+
+        // No meetings after December 16
+        if (month === 11 && day > 17) {
+          dayElement.classList.add('holiday');
+          addDotAndHandler('dot-red',
+            `No Meeting - ${month + 1}/${day}/${year}`,
+            `<h3>No Club Meeting</h3>
+             <p><strong>Date:</strong> ${month + 1}/${day}/${year}</p>
+             <p><strong>Description:</strong> The Fall 2025 semester has ended. No club meetings until the Spring semester begins.</p>`
+          );
+        }
+
+        // If no special handler attached, show default on click
+        if (!dayElement.onmousedown && !dayElement.classList.contains('event') && !dayElement.classList.contains('holiday') && !dayElement.classList.contains('special')) {
+          dayElement.addEventListener('click', () => {
+            eventTitle.textContent = `${month + 1}/${day}/${year}`;
+            eventDetails.innerHTML = `<p>No scheduled events for this date.</p>`;
+            openModal(eventModal);
+          });
+          dayElement.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              eventTitle.textContent = `${month + 1}/${day}/${year}`;
+              eventDetails.innerHTML = `<p>No scheduled events for this date.</p>`;
+              openModal(eventModal);
+            }
+          });
+        }
+
+        container.appendChild(dayElement);
+      }
+    }
+
+    // Generate calendars (months are zero-indexed: 9=Oct, 10=Nov, 11=Dec)
+    generateCalendar('october-calendar', 9, 2025);
+    generateCalendar('november-calendar', 10, 2025);
+    generateCalendar('december-calendar', 11, 2025);
+
+    /* -------------------------
+       Header shadow on scroll
+    ------------------------- */
+    const header = document.querySelector('header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      });
+    }
+
+    /* -------------------------
+      Small enhancement: trap focus inside modal when open (simple)
+      - keeps keyboard users from tabbing behind modal
+    ------------------------- */
+    document.addEventListener('focusin', (e) => {
+      const openModalEl = document.querySelector('.modal[aria-hidden="false"]');
+      if (!openModalEl) return;
+      if (!openModalEl.contains(e.target)) {
+        // move focus back to modal
+        const focusable = openModalEl.querySelector('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable) focusable.focus();
+      }
+    });
+  </script>
+</body>
+</html>
