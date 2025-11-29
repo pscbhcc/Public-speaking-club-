@@ -16,14 +16,14 @@ N:B: For good view use a desktop 🖥 not a phone 📱
 ## 📁 Project Structure
 
 public-speaking-club/
-│
-├── index.html # Main HTML file
-├── README.md # This documentation file
-└── image/ # Folder containing all images (logo, member photos, announcements)
-├── PSC LOGO.jpg
-├── homepage.jpg
-├── Lee_An_Reth.jpg
-└── ... (other images)
+|--
+\ index.html # Main HTML file
+\ README.md # This documentation file
+\ image/ # Folder containing all images (logo, member photos, announcements)
+\ PSC LOGO.jpg
+\ homepage.jpg
+\ Lee_An_Reth.jpg
+\ ... (other images)
 
 
 > 💡 **Note**: All assets are self-contained in a single HTML file with embedded CSS and JavaScript — no external dependencies.
@@ -87,4 +87,5 @@ Have questions or want to get involved?
 ## 📄 License
 
 &copy; 2025 Public Speaking Club, BHCC. All rights reserved.
+
 
