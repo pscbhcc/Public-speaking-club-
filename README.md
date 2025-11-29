@@ -8,7 +8,8 @@ This site serves as a hub for club information, announcements, leadership detail
 ## 🌐 Live Demo
 
 View the live site here:  
-👉 
+👉 https://pscbhcc.github.io/Public-speaking-club/
+N:B: For good view use a desktop 🖥 not a phone 📱 
 
 ---
 
@@ -86,3 +87,4 @@ Have questions or want to get involved?
 ## 📄 License
 
 &copy; 2025 Public Speaking Club, BHCC. All rights reserved.
+
