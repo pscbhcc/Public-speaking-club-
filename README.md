@@ -9,6 +9,7 @@ This site serves as a hub for club information, announcements, leadership detail
 
 View the live site here:  
 👉 https://pscbhcc.github.io/Public-speaking-club/
+
 N:B: For good view use a desktop 🖥 not a phone 📱 
 
 ---
@@ -75,17 +76,9 @@ Ronewa Masindi with the help of Nhan Lien, Julie Dorchhuon, and Arturo Li.
 
 Special thanks to the club leadership and members for their support!
 
----
-
-## 📧 Contact
-
-Have questions or want to get involved?  
-📧 Email us at: [psc.bhcc@gmail.com]
-
----
-
 ## 📄 License
 
 &copy; 2025 Public Speaking Club, BHCC. All rights reserved.
+
 
 
